@@ -4,6 +4,11 @@ namespace Core;
 
 class LexPermutation 
 {
+    /**
+     * Get next permutation.
+     * @param  array  $perm
+     * @return array
+     */
     public function successor(array $perm)
     {
         $n = count($perm);
@@ -15,14 +20,17 @@ class LexPermutation
             $i--;
         
         if($i == 0)
-            return;
+            return null;
 
         while($perm[$i] > $perm[$j])
             $j--;
 
+        // Sweetch
         $tmp = $perm[$i];
         $perm[$i] = $perm[$j];
         $perm[$j] = $tmp;
+
+        // Combine two array
         $end_perm = array_slice($perm, $i+1, $n);
         asort($end_perm);
         $begin_perm = array_slice($perm, 1, $i);
@@ -30,13 +38,23 @@ class LexPermutation
         return array_merge($begin_perm, $end_perm); 
     }
 
+    /**
+     * Get previus permutation.
+     * @param  array  $perm
+     * @return array
+     */
     public function predeccessor(array $perm)
     {
         $rank = $this->rank($perm) - 1;
-        if($rank < 0) return;
+        if($rank < 0) return null;
         return $this->unrank(count($perm), $rank);
     }
 
+    /**
+     * Find rank number of permutation.
+     * @param  array  $perm
+     * @return Integer
+     */
     public function rank(array $perm)
     {
         $n = count($perm);
@@ -56,6 +74,12 @@ class LexPermutation
         return ($perm[0] - 1) * $this->fact($n - 1) + $tmp_rank;
     }
 
+    /**
+     * Make permutation from rank number.
+     * @param  int    $n    length
+     * @param  int    $rank
+     * @return array
+     */
     public function unrank(int $n, int $rank)
     {
         if($rank > $this->fact($n) - 1 || $rank < 0 || $n < 0)
@@ -103,7 +127,3 @@ class LexPermutation
         return $factorial;
     }
 }
-/*
-return (perm.sort == perm ? 0 : 1) if n == 2
-      (perm.first - 1) * factorial(n-1) + rank(n-1, perm.drop(1).map{ |a| a > perm.first ? a-1 : a})
-*/
