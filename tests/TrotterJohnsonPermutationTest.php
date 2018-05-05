@@ -2,41 +2,41 @@
 
 namespace Tests;
 
-use Core\LexPermutation;
+use Core\TrotterJohnsonPermutation;
 use PHPUnit\Framework\TestCase;
 
-class LexPermutationTest extends TestCase
+class TrotterJohnsonPermutationTest extends TestCase
 {
     private $permutation;
 
     private $results = [
             [1,2,4,3],
-            [1,3,2,4],
-            [1,3,4,2],
             [1,4,2,3],
-            [1,4,3,2],
-            [2,1,3,4],
-            [2,1,4,3],
-            [2,3,1,4],
-            [2,3,4,1],
-            [2,4,1,3],
-            [2,4,3,1],
-            [3,1,2,4],
-            [3,1,4,2],
-            [3,2,1,4],
-            [3,2,4,1],
-            [3,4,1,2],
-            [3,4,2,1],
             [4,1,2,3],
             [4,1,3,2],
-            [4,2,1,3],
+            [1,4,3,2],
+            [1,3,4,2],
+            [1,3,2,4],
+            [3,1,2,4],
+            [3,1,4,2],
+            [3,4,1,2],
+            [4,3,1,2],
+            [4,3,2,1],
+            [3,4,2,1],
+            [3,2,4,1],
+            [3,2,1,4],
+            [2,3,1,4],
+            [2,3,4,1],
+            [2,4,3,1],
             [4,2,3,1],
-            [4,3,1,2]
+            [4,2,1,3],
+            [2,4,1,3],
+            [2,1,4,3]
         ];
 
     public function setUp()
     {
-        $this->permutation = new LexPermutation;
+        $this->permutation = new TrotterJohnsonPermutation;
     }
 
     public function testSuccesor()
@@ -52,7 +52,7 @@ class LexPermutationTest extends TestCase
 
     public function testPredecessor()
     {
-        $perm = [4,3,2,1];
+        $perm = [2,1,3,4];
 
         foreach (array_reverse($this->results) as $expect) {
             $perm = $this->permutation->predeccessor($perm);
