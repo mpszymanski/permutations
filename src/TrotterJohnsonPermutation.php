@@ -93,54 +93,42 @@ class TrotterJohnsonPermutation
     unset($tmp[$index]);
     $tmp = array_values($tmp);
 
-    $one_less_subset = $tmp;
-    $position_of_subset_max = $index + 1;
-    $one_less_subset_rank = $this->rank($one_less_subset);
-    $epsilon = $this->epsilon($position_of_subset_max, $n, $one_less_subset_rank);
+    $one_less_perm = $tmp;
+    $position_of_perm_max = $index + 1;
+    $one_less_perm_rank = $this->rank($one_less_perm);
+    $epsilon = $this->epsilon($position_of_perm_max, $n, $one_less_perm_rank);
 
-    return $n * $one_less_subset_rank + $epsilon;
+    return $n * $one_less_perm_rank + $epsilon;
   }
 
-  public function unrank(int $n, int $rank)
-  {
-      $r1 = 0;
-      $r2 = 0;
-      $r = $rank;
+    public function unrank(int $n, int $rank) // 4, 0
+    {
+        if($n == 1) {
+            return [1];
+        }
 
-      $perm = [];
+        $prev_rank = floor($rank / $n); // 0
+        $epsilon = $rank - $n * $prev_rank; // 0
 
-      $perm[0] = 1;
-      for ($j = 1; $j <= $n; $j++)
-      {
-          $r1 = $r * $this->fact($j) / $this->fact($n);
-          $k = ($r1 - $j) * $r2;
-          if ($r2 % 2 == 0)
-          {
-              for ($i = $j - 1; $i >= $j - $k; $i--) {
-                  $perm[$i] = $perm[$i-1];
-              }
-              $perm[$j-$k-1] = $j;
-          } else {
-              for ($i = $j-1; $i >= $k+1; $i--) {
-                  $perm[$i] = $perm[$i-1];
-              }
-              $perm[$k] = $j;
-          }
-          $r2=$r1;
-      }
+        if($prev_rank % 2 === 0) {
+            $max_index = $n - $epsilon - 1; // 1
+        } else {
+            $max_index = $epsilon;
+        }
 
-      return $perm;
-  }
+        $perm = $this->unrank($n - 1, $prev_rank);
+
+        array_splice($perm, $max_index, 0, $n);
+
+        return $perm;
+    }
 
   private function epsilon(int $k, int $n, int $parity)
   {
-    if ($parity % 2 == 0)
-    {
-      $epsilon = $n - $k;
-    }
-    else
-    {
-      $epsilon = $k - 1;
+    if ($parity % 2 == 0) {
+        $epsilon = $n - $k;
+    } else {
+        $epsilon = $k - 1;
     }
 
     return $epsilon;
@@ -148,15 +136,14 @@ class TrotterJohnsonPermutation
 
   private function fact(int $num)
   {
-      if(! $num) return 0;
+    if(! $num) return 0;
 
-      $factorial = 1;
-      for ($x = $num; $x >= 1; $x--)
-      {
+    $factorial = 1;
+    for ($x = $num; $x >= 1; $x--) {
         $factorial = $factorial * $x;
-      }
+    }
 
-      return $factorial;
+    return $factorial;
   }
 
   private function permParity($perm, $size)
@@ -183,8 +170,5 @@ class TrotterJohnsonPermutation
         }
     }
     return ($size-$c) % 2;
-  }
+    }
 }
-$ob = new TrotterJohnsonPermutation;
-echo $ob->rank([1,5,2,3,4]) . "\n";
-print_r($ob->unrank(5,4));
