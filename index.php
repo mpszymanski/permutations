@@ -3,6 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Core\LexPermutation;
+use Core\TrotterJohnsonPermutation;
 
 $lex = new LexPermutation;
 
@@ -37,6 +38,12 @@ while(true) {
 	$rank = $lex->rank($perm);
 	echo "Rank: $rank -> Unrank: [" . implode($perm, ',') . "]\n";
 };
+
+$trotter = new TrotterJohnsonPermutation;
+
+echo "=======================\n";
+echo "#3 Rank and unrank example\n";
+echo $trotter->rank([1,2]);
 
 /*
 while($next !== null) {
