@@ -62,12 +62,40 @@ class TrotterJohnsonPermutationTest extends TestCase
 
     public function testRanAndUnrank()
     {
-        for($len = 2; $len <= 8; $len++) {
-            $rank = 0;
-            while($perm = $this->permutation->unrank($len, $rank)) {
-                $this->assertEquals($this->permutation->rank($perm), $rank);
-                $rank++;
-            }
+        // for len 2
+        $len = 2;
+        $rank = 0;
+        for($i = 0; $i < 2; $i++) {
+            $perm = $this->permutation->unrank($len, $rank);
+            $this->assertEquals($this->permutation->rank($perm), $rank);
+            $rank++;
+        }
+
+        // for len 3
+        $len = 3;
+        $rank = 0;
+        for($i = 0; $i < 6; $i++) {
+            $perm = $this->permutation->unrank($len, $rank);
+            $this->assertEquals($this->permutation->rank($perm), $rank);
+            $rank++;
+        }
+
+        // for len 4
+        $len = 4;
+        $rank = 0;
+        for($i = 0; $i < 24; $i++) {
+            $perm = $this->permutation->unrank($len, $rank);
+            $this->assertEquals($this->permutation->rank($perm), $rank);
+            $rank++;
+        }
+
+        // for len 5
+        $len = 5;
+        $rank = 0;
+        for($i = 0; $i < 120; $i++) {
+            $perm = $this->permutation->unrank($len, $rank);
+            $this->assertEquals($this->permutation->rank($perm), $rank);
+            $rank++;
         }
     }
 }

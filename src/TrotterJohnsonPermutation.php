@@ -101,17 +101,17 @@ class TrotterJohnsonPermutation
     return $n * $one_less_perm_rank + $epsilon;
   }
 
-    public function unrank(int $n, int $rank) // 4, 0
+    public function unrank(int $n, int $rank)
     {
         if($n == 1) {
             return [1];
         }
 
-        $prev_rank = floor($rank / $n); // 0
-        $epsilon = $rank - $n * $prev_rank; // 0
+        $prev_rank = floor($rank / $n);
+        $epsilon = $rank - $n * $prev_rank;
 
         if($prev_rank % 2 === 0) {
-            $max_index = $n - $epsilon - 1; // 1
+            $max_index = $n - $epsilon - 1;
         } else {
             $max_index = $epsilon;
         }
