@@ -8,9 +8,9 @@ use Core\TrotterJohnsonPermutation;
 
 $lex = new LexPermutation;
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "***LEX PERMUTATION****\n";
-echo "=======================\n";
+echo "=======================\n\n";
 echo "#1 Successor example\n";
 $perm = [1,2,3,4];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -20,7 +20,7 @@ while(true) {
 	echo 'next -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#2 Predeccessor example\n";
 $perm = [4,3,2,1];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -30,7 +30,7 @@ while(true) {
 	echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#3 Rank and unrank example\n";
 $rank = -1;
 $len = 4;
@@ -44,9 +44,9 @@ while(true) {
 
 $trotter = new TrotterJohnsonPermutation;
 
-echo "=======================\n";
+echo "\n==========================\n";
 echo "***TROTTER PERMUTATION****\n";
-echo "=======================\n";
+echo "==========================\n\n";
 echo "#1 Successor example\n";
 $perm = [1,2,3,4];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -56,7 +56,7 @@ while(true) {
     echo 'next -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#2 Predeccessor example\n";
 $perm = [4,3,2,1];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -66,7 +66,7 @@ while(true) {
     echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#3 Rank and unrank example\n";
 $rank = -1;
 $len = 4;
@@ -80,9 +80,9 @@ while(true) {
 
 $gray = new GrayPermutation;
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "***GRAY PERMUTATION****\n";
-echo "=======================\n";
+echo "=======================\n\n";
 echo "#1 Successor example\n";
 $perm = [0,0,0];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -92,7 +92,7 @@ while(true) {
     echo 'next -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#2 Predeccessor example\n";
 $perm = [1,0,0];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
@@ -102,7 +102,7 @@ while(true) {
     echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
-echo "=======================\n";
+echo "\n=======================\n";
 echo "#3 Rank and unrank example\n";
 $rank = -1;
 $len = 3;
