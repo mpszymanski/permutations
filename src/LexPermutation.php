@@ -2,7 +2,9 @@
 
 namespace Core;
 
-class LexPermutation 
+use Core\Permutation;
+
+class LexPermutation implements Permutation
 {
     /**
      * Get next permutation.
@@ -115,6 +117,11 @@ class LexPermutation
         return $perm;
     }
 
+    /**
+     * Return factorial.
+     * @param  int    $num
+     * @return int
+     */
     private function fact(int $num)
     {
         if(! $num) return 0;
