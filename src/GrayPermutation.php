@@ -17,12 +17,12 @@ class GrayPermutation implements Permutation
         $rank = $this->rank($perm);
         if($rank >= pow($n, 2) - 2) return null;
 
-        $changed_bits = $rank ^ ($rank + 1);
-        $gray_bits = $changed_bits ^ ($changed_bits >> 1);
+        $changed = $rank ^ ($rank + 1);
+        $gray_bits = $changed ^ ($changed >> 1);
         $perm_string = implode("", $perm);
         $code_value = bindec($perm_string) ^ $gray_bits;
-        $code_bin = decbin($code_value);
-        $gray = str_split($code_bin);
+        $bin = decbin($code_value);
+        $gray = str_split($bin);
 
         while(count($gray) != $n) {
             array_unshift($gray, 0);
@@ -42,12 +42,12 @@ class GrayPermutation implements Permutation
         $rank = $this->rank($perm);
         if($rank == 0) return null;
 
-        $changed_bits = ($rank - 1) ^ $rank;
-        $gray_bits = $changed_bits ^ ($changed_bits >> 1);
+        $changed = ($rank - 1) ^ $rank;
+        $gray_bits = $changed ^ ($changed >> 1);
         $perm_string = implode("", $perm);
         $code_value = bindec($perm_string) ^ $gray_bits;
-        $code_bin = decbin($code_value);
-        $gray = str_split($code_bin);
+        $bin = decbin($code_value);
+        $gray = str_split($bin);
 
         while(count($gray) != $n) {
             array_unshift($gray, 0);

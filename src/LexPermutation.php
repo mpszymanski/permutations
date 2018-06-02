@@ -127,8 +127,7 @@ class LexPermutation implements Permutation
         if(! $num) return 0;
 
         $factorial = 1;
-        for ($x = $num; $x >= 1; $x--) 
-        {
+        for ($x = $num; $x >= 1; $x--) {
           $factorial = $factorial * $x;
         }
         return $factorial;

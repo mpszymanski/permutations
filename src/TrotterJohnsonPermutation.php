@@ -88,13 +88,11 @@ class TrotterJohnsonPermutation implements Permutation
     {
         $n = count($perm);
 
-        if ($n == 0)
-        {
+        if ($n == 0) {
             return null;
         }
 
-        if ($n == 1)
-        {
+        if ($n == 1) {
             return 0;
         }
 
@@ -185,20 +183,16 @@ class TrotterJohnsonPermutation implements Permutation
     {
         $flags = [];
         $c = 0;
-        for ($i = 0; $i < $size; $i++)
-        {
+        for ($i = 0; $i < $size; $i++) {
             $flags[$i] = false;
         }
 
-        for ($j = 1; $j <= $size; $j++)
-        {
-            if (! $flags[$j-1])
-            {
+        for ($j = 1; $j <= $size; $j++) {
+            if (! $flags[$j-1]) {
                 $c++;
                 $flags[$j-1] = true;
                 $i = $j;
-                while ($perm[$i-1] != $j)
-                {
+                while ($perm[$i-1] != $j) {
                     $i = $perm[$i-1];
                     $flags[$i-1] = true;
                 }
