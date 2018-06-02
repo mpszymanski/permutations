@@ -103,11 +103,11 @@ class TrotterJohnsonPermutation implements Permutation
         $tmp = array_values($tmp);
 
         $one_less_perm = $tmp;
-        $position_of_perm_max = $index + 1;
-        $one_less_perm_rank = $this->rank($one_less_perm);
-        $epsilon = $this->epsilon($position_of_perm_max, $n, $one_less_perm_rank);
+        $max_perm_position = $index + 1;
+        $prev_rank = $this->rank($one_less_perm);
+        $epsilon = $this->epsilon($max_perm_position, $n, $prev_rank);
 
-        return $n * $one_less_perm_rank + $epsilon;
+        return $n * $prev_rank + $epsilon;
     }
 
     /**
