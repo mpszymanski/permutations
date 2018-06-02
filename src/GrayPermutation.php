@@ -13,9 +13,22 @@ class GrayPermutation implements Permutation
      */
     public function successor(array $perm)
     {
-        $rank = $this->rank($perm) + 1;
-        if($rank >= pow(count($perm), 2) - 1) return null;
-        return $this->unrank(count($perm), $rank);
+        $n = count($perm);
+        $rank = $this->rank($perm);
+        if($rank >= pow($n, 2) - 2) return null;
+
+        $changed_bits = $rank ^ ($rank + 1);
+        $gray_bits = $changed_bits ^ ($changed_bits >> 1);
+        $perm_string = implode("", $perm);
+        $code_value = bindec($perm_string) ^ $gray_bits;
+        $code_bin = decbin($code_value);
+        $gray = str_split($code_bin);
+
+        while(count($gray) != $n) {
+            array_unshift($gray, 0);
+        }
+
+        return $gray;
     }
 
     /**
@@ -25,9 +38,22 @@ class GrayPermutation implements Permutation
      */
     public function predeccessor(array $perm)
     {
-        $rank = $this->rank($perm) - 1;
-        if($rank < 0) return null;
-        return $this->unrank(count($perm), $rank);
+        $n = count($perm);
+        $rank = $this->rank($perm);
+        if($rank == 0) return null;
+
+        $changed_bits = ($rank - 1) ^ $rank;
+        $gray_bits = $changed_bits ^ ($changed_bits >> 1);
+        $perm_string = implode("", $perm);
+        $code_value = bindec($perm_string) ^ $gray_bits;
+        $code_bin = decbin($code_value);
+        $gray = str_split($code_bin);
+
+        while(count($gray) != $n) {
+            array_unshift($gray, 0);
+        }
+
+        return $gray;
     }
 
     /**

@@ -26,7 +26,7 @@ $perm = [4,3,2,1];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
 while(true) {
 	$perm = $lex->predeccessor($perm);
-	if($perm == null) break;
+	if($perm === null) break;
 	echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
@@ -37,7 +37,7 @@ $len = 4;
 while(true) {
 	$rank++;
 	$perm = $lex->unrank($len, $rank);
-	if($perm == null) break;
+	if($perm === null) break;
 	$rank = $lex->rank($perm);
 	echo "Rank: $rank -> Unrank: [" . implode($perm, ',') . "]\n";
 };
@@ -52,7 +52,7 @@ $perm = [1,2,3,4];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
 while(true) {
     $perm = $trotter->successor($perm);
-    if($perm == null) break;
+    if($perm === null) break;
     echo 'next -> [' . implode($perm, ',') . "]\n";
 }
 
@@ -62,7 +62,7 @@ $perm = [4,3,2,1];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
 while(true) {
     $perm = $trotter->predeccessor($perm);
-    if($perm == null) break;
+    if($perm === null) break;
     echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
@@ -88,7 +88,7 @@ $perm = [0,0,0];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
 while(true) {
     $perm = $gray->successor($perm);
-    if($perm == null) break;
+    if($perm === null) break;
     echo 'next -> [' . implode($perm, ',') . "]\n";
 }
 
@@ -98,7 +98,7 @@ $perm = [1,0,0];
 echo 'Init -> [' . implode($perm, ',') . "]\n";
 while(true) {
     $perm = $gray->predeccessor($perm);
-    if($perm == null) break;
+    if($perm === null) break;
     echo 'Prev -> [' . implode($perm, ',') . "]\n";
 }
 
@@ -109,7 +109,7 @@ $len = 3;
 while(true) {
     $rank++;
     $perm = $gray->unrank($len, $rank);
-    if($perm == null) break;
+    if($perm === null) break;
     $rank = $gray->rank($perm);
     echo "Rank: $rank -> Unrank: [" . implode($perm, ',') . "]\n";
 };
